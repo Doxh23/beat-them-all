@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 body {
+  color: white;
   background:url("../picture/background.png");
   background-size: cover;
   height: 100vh;
@@ -30,6 +31,9 @@ body {
       transition: all 2s ease-out;
       flex-direction: column;
       justify-content: center;
+      h2{
+        margin: 30px auto;
+      }
       input,
       select,
       button {
@@ -132,18 +136,29 @@ body {
 
 .log{
     position: absolute;
+    display: flex;
+    flex-direction: column;
     top: 20%;
     right: 0;
     background-color: rgba(57, 53, 53,0.5);
      width: 200px;
     height: 60%;
     color: white;
+    border-radius: 20px;
     overflow: scroll;
+    margin: 15px 15px;
     -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
     .eventmessage{
       display: flex;
     flex-direction: row;
+    h4{
+      margin-left: 15px;
+      margin-top: 15px;
+    }
+    p{
+      margin-top: 15px;
+    }
     }
 }
 

@@ -83,7 +83,7 @@ function messageLog(damage,name){
   switch (true) {
     case (damage>= 14):
       return ` :nice one , you have done ${Math.floor(damage)} to ${name}`
-    case (damage < 14 && damage > 10):
+    case (damage < 14 && damage >= 10):
       return ` :good job, you have done ${Math.floor(damage)} to ${name}`
     case (damage < 10):
       return ` :unlucky , you have done ${Math.floor(damage)} to ${name}`
@@ -124,6 +124,12 @@ function makedamage(take, make) {
     }
     if (player[take].currenthealth <= damage) {
       player[take].currenthealth = 0;
+    }
+    if (player[make].currenthealth <= 0) {
+      player[make].currenthealth = 0;
+    }
+    if (player[make].currenthealth <= damage) {
+      player[make].currenthealth = 0;
     }
     if (player[make].race === "Vampire") {
       player[make].currenthealth = player[make].currenthealth + damage * 0.1;

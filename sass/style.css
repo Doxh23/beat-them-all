@@ -7,6 +7,7 @@
 }
 
 body {
+  color: white;
   background: url("../picture/background.png");
   background-size: cover;
   height: 100vh;
@@ -51,6 +52,10 @@ body .box .modal1, body .box .modal2 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+body .box .modal1 h2, body .box .modal2 h2 {
+  margin: 30px auto;
 }
 
 body .box .modal1 input,
@@ -194,13 +199,22 @@ body .box .action button:hover {
 
 body .log {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   top: 20%;
   right: 0;
   background-color: rgba(57, 53, 53, 0.5);
   width: 200px;
   height: 60%;
   color: white;
+  border-radius: 20px;
   overflow: scroll;
+  margin: 15px 15px;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -215,6 +229,15 @@ body .log .eventmessage {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+body .log .eventmessage h4 {
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+body .log .eventmessage p {
+  margin-top: 15px;
 }
 
 body .log::-webkit-scrollbar {
