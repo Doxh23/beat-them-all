@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -6,12 +7,16 @@
 }
 
 body {
-  background: aquamarine;
+  background: url("../picture/background.png");
+  background-size: cover;
   height: 100vh;
   width: 100vw;
+  position: relative;
+  font-family: 'Lobster', cursive;
 }
 
 body .box {
+  position: relative;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,6 +33,74 @@ body .box {
           align-items: center;
 }
 
+body .box .modal1, body .box .modal2 {
+  position: absolute;
+  width: 60%;
+  height: 500px;
+  background-color: rgba(57, 53, 53, 0.5);
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .box .modal1 input,
+body .box .modal1 select,
+body .box .modal1 button, body .box .modal2 input,
+body .box .modal2 select,
+body .box .modal2 button {
+  width: 50%;
+  margin: 10px auto;
+  border-radius: 25px;
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+}
+
+body .box .hidden {
+  display: none;
+  opacity: 0;
+}
+
+body .box .box-player {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 500px;
+  width: 60%;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .box .player1 {
+  border-right: 2px solid black;
+  background-color: #393535cc;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+body .box .player2 {
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: #39353580;
+}
+
 body .box .player {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -36,15 +109,105 @@ body .box .player {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 30%;
-  height: 500px;
+  width: 50%;
+  height: auto;
   text-align: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
-body .box .player .nom-race {
+body .box .player .pv {
+  width: 80%;
+  height: 20px;
+  margin: auto;
+  background-color: white;
+  border-radius: 25px;
+}
+
+body .box .player .pv .bar {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 25px;
+}
+
+body .box .player .info-player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+body .box .player .info-player .nom1, body .box .player .info-player .nom2 {
+  color: white;
+}
+
+body .box .player .info-player .portrait {
+  height: 50%;
+  margin: 10px;
+}
+
+body .box .player .info-player .portrait img {
+  width: 100%;
+  height: 100%;
+}
+
+body .box .player .info-player .nom-race {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: auto;
+}
+
+body .box .player .info-player .nom-race div {
+  margin: 0 10px;
+  background: transparent;
+  border-radius: 15px;
+  width: 75px;
+}
+
+body .box .action {
+  margin-bottom: 10px;
+}
+
+body .box .action button {
+  border: none;
+  background: none;
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 25px;
+  margin: 0 10px 0 10px;
+}
+
+body .box .action button:hover {
+  color: aqua;
+}
+
+body .log {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  background-color: rgba(57, 53, 53, 0.5);
+  width: 200px;
+  height: 60%;
+  color: white;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body .log .eventmessage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,7 +217,12 @@ body .box .player .nom-race {
           flex-direction: row;
 }
 
-body .box .player .nom-race div {
-  margin: 0 10px;
+body .log::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
 }
 /*# sourceMappingURL=style.css.map */

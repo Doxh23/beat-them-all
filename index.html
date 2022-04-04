@@ -1,33 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>beat them all</title>
-    <link rel="stylesheet" href="./sass/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./sass/style.css" />
+  </head>
+  <body>
     <div class="box">
-        <div class="player">
-            <div class="pv"></div>
-            <div class="nom-race">
-                <div class="nom">goony</div>
-                <div class="race">orc</div>
-                <div class="arme">epee</div>
-            </div>
+      <div class="box-player hidden">
+      <div class="player player1">
+        <div class="info-player">
+          <div class="portrait">
+            <img class="portrait1" src="./picture/player1.gif" alt="" />
+          </div>
+          <div class="nom1">Jean-Jacques</div>
+          <div class="pv"> 
+            <div class="bar"></div>
+          </div>
+          <div class="nom-race">
+            <div class="perso1">orc</div>
+            <div class="arme1">gourdin</div>
+          </div>
+          <div class="action">
+            <button class="dmg">attaque</button>
+            <button class="yield">defense</button>
+            <button class="heal">heal</button>
+          </div>
         </div>
-        <div class="player">
-            <div class="pv"></div>
-            <div class="nom-race">
-                <div class="nom">thomas</div>
-                <div class="race">orc</div>
-                <div class="arme">gourdin</div>
-            </div>
+      </div>
+      <div class="player player2">
+        <div class="info-player">
+          <div class="portrait">
+            <img
+              src="./picture/player2.gif"
+              style="transform: scaleX(-1)"
+              alt=""
+            />
+          </div>
+          <div class="nom2">thomas</div>
+          <div class="pv">
+            <div class="bar"></div>
+          </div>
+          <div class="nom-race">
+            <div class="perso2">orc</div>
+            <div class="arme2">gourdin</div>
+          </div>
+          <div class="action">
+            <button class="dmg">attaque</button>
+            <button class="yield">defense</button>
+            <button class="heal">heal</button>
+          </div>
         </div>
-        <div class="modal">
-        </div>
-
+      </div>
     </div>
-</body>
+      <div class="modal"></div>
+      <div class="modal1">
+        <select name="race" class="race1">
+          <option value="">--- pls select a race---</option>
+          <option value="Human">Human</option>
+          <option value="Orc">Orc</option>
+          <option value="Elve">Elve</option>
+          <option value="Vampire">Vampire</option>
+        </select>
+        <select name="" class="item1">
+          <option value="">--- pls select an item---</option>
+          <option value="boots">Boots</option>
+          <option value="Staff">Staff</option>
+          <option value="Sword">Sword</option>
+          <option value="Bow">Bow</option>
+        </select>
+        <input type="text" class="name1" />
+        <button class="submit1">submit</button>
+      </div>
+      <div class="modal2 hidden">
+        <select name="race" class="race2">
+          <option value="">--- pls select a race---</option>
+          <option value="Human">Human</option>
+          <option value="Orc">Orc</option>
+          <option value="Elve">Elve</option>
+          <option value="Vampire">Vampire</option>
+        </select>
+        <select name="" class="item2">
+          <option value="">---pls select an item---</option>
+          <option value="boots">Boots</option>
+          <option value="Staff">Staff</option>
+          <option value="Sword">Sword</option>
+          <option value="Bow">Bow</option>
+        </select>
+        <input type="text" class="name2" />
+        <button class="submit2">submit</button>
+      </div>
+    </div>
+    <div class="log hidden">
+        
+      <template>
+        <div class="eventmessage">
+          <h4 class="log-name">fighter 1</h4>
+          <p class="log-action">made an attack</p>
+          <hr>
+        </div>
+      </template>
+    </div>
+    <script src="character.js"></script>
+    <script src="game-logic.js"></script>
+  </body>
 </html>
