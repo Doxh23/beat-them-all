@@ -4,12 +4,16 @@ const heal = document.querySelectorAll(".heal");
 const yield = document.querySelectorAll(".yield");
 let player1 = "";
 let player2 = "";
-const playerBox = document.querySelector('.box-player')
+const playerBox = document.querySelector(".box-player");
 const name1 = document.querySelector(".name1");
 const name2 = document.querySelector(".name2");
 let player = [];
 const race1 = document.querySelector(".race1");
 const race2 = document.querySelector(".race2");
+
+const restartModal = document.querySelector(".restart-modal");
+const messageWin = document.querySelector(".message-win");
+
 
 const item1 = document.querySelector(".item1");
 const item2 = document.querySelector(".item2");
@@ -29,18 +33,18 @@ const perso2 = document.querySelector(".perso2");
 const arme1 = document.querySelector(".arme1");
 const arme2 = document.querySelector(".arme2");
 
-const log = document.querySelector('.log')
-const logName = document.querySelector('.log-name')
-const logAction = document.querySelector('.log-action')
+const log = document.querySelector(".log");
+const logName = document.querySelector(".log-name");
+const logAction = document.querySelector(".log-action");
 let playerturn = 0;
 let def = 0;
 
 console.log(submit1.style);
-function makeLog(message,name){
+function makeLog(message, name) {
   const temp = document.getElementsByTagName("template")[0];
   let clone = temp.content.cloneNode(true);
-  clone.querySelector('h4').innerHTML = ` ${name}`
-  clone.querySelector("p").innerHTML = `   ${message}`
+  clone.querySelector("h4").innerHTML = ` ${name}`;
+  clone.querySelector("p").innerHTML = `   ${message}`;
   log.appendChild(clone);
 }
 submit1.addEventListener("click", function () {
@@ -49,10 +53,9 @@ submit1.addEventListener("click", function () {
   let name = name1.value;
   console.log(race);
   if (name !== "") {
-    
-    modal1.classList.toggle('hidden')
-    modal2.classList.remove('hidden')
-    player1 = new Person(race, item,name);
+    modal1.classList.toggle("hidden");
+    modal2.classList.remove("hidden");
+    player1 = new Person(race, item, name);
     nom1.innerHTML = name;
     perso1.innerHTML = race;
     arme1.innerHTML = item;
@@ -64,11 +67,11 @@ submit2.addEventListener("click", function () {
   let race = race2.value;
   let item = item2.value;
   let name = name2.value;
-  if (name !== "" && race !== "" && item !== ""  && name !== "") {
-    modal2.classList.toggle('hidden')
-    log.classList.remove('hidden')
-    playerBox.classList.remove('hidden')
-    let player2 = new Person(race, item,name);
+  if (name !== "" && race !== "" && item !== "" && name !== "") {
+    modal2.classList.toggle("hidden");
+    log.classList.remove("hidden");
+    playerBox.classList.remove("hidden");
+    let player2 = new Person(race, item, name);
     player = [player1, player2];
     nom2.innerHTML = name;
     perso2.innerHTML = race;
@@ -78,21 +81,35 @@ submit2.addEventListener("click", function () {
     alert("pls fill all blank");
   }
 });
-function messageLog(damage,name){
-  console.log(damage)
+function messageLog(damage, name) {
+  console.log(damage);
   switch (true) {
-    case (damage>= 14):
-      return ` :nice one , you have done ${Math.floor(damage)} to ${name}`
-    case (damage < 14 && damage >= 10):
-      return ` :good job, you have done ${Math.floor(damage)} to ${name}`
-    case (damage < 10):
-      return ` :unlucky , you have done ${Math.floor(damage)} to ${name}`
+    case damage >= 14:
+      return ` :nice one , you have done ${Math.floor(damage)} to ${name}`;
+    case damage < 14 && damage >= 10:
+      return ` :good job, you have done ${Math.floor(damage)} to ${name}`;
+    case damage < 10:
+      return ` :unlucky , you have done ${Math.floor(damage)} to ${name}`;
     default:
-      return 'hello';
+      return "hello";
   }
 }
+function displayRestart(player) {
+  messageWin.innerHTML = `${player} is the winner`;
+    restartModal.classList.remove("hidden");
+    playerBox.classList.add("hidden");
+    restartModal.style.zIndex = "4";
+}
+function checkWinner() {
+  if (player[0].currenthealth <= 0) {
+      displayRestart(player[1].name);
+  } else if (player[1].currenthealth <= 0) {
+    displayRestart(player[0].name);
+  }
+
+}
 function percent() {
-  return(Math.floor(Math.random() * 10));
+  return Math.floor(Math.random() * 10);
 }
 function makedamage(take, make) {
   let damage = player[make].damage();
@@ -105,7 +122,7 @@ function makedamage(take, make) {
       player[make].currenthealth = Math.floor(
         player[make].currenthealth - damage / 2
       );
-      makeLog("reverse his attack",player[take].name)
+      makeLog("reverse his attack", player[take].name);
     } else {
       if (def === 1) {
         player[take].currenthealth = Math.floor(
@@ -133,22 +150,25 @@ function makedamage(take, make) {
     }
     if (player[make].race === "Vampire") {
       player[make].currenthealth = player[make].currenthealth + damage * 0.1;
-      makeLog("stole blood from his opponent",player[make].name)
+      makeLog("stole blood from his opponent", player[make].name);
     }
     lifebar[take].style.width = `${player[take].currenthealth}%`;
     lifebar[make].style.width = `${player[make].currenthealth}%`;
   }
-  document.querySelector(`.player${make+1}`).style.backgroundColor = "#39353580"
-  document.querySelector(`.player${take+1}`).style.backgroundColor = "#393535cc"
+  document.querySelector(`.player${make + 1}`).style.backgroundColor =
+    "#39353580";
+  document.querySelector(`.player${take + 1}`).style.backgroundColor =
+    "#393535cc";
 
-  let message = messageLog(damage,player[make].name)
-  console.log(message)
-  makeLog(message,player[make].name)
+  let message = messageLog(damage, player[make].name);
+  console.log(message);
+  makeLog(message, player[make].name);
   playerturn = take;
   def = 0;
+  checkWinner()
 }
 
-function makeheal(make,p2) {
+function makeheal(make, p2) {
   if (player[make].currenthealth !== 100) {
     player[make].currenthealth = Math.floor(
       player[make].currenthealth + player[make].heal()
@@ -162,25 +182,26 @@ function makeheal(make,p2) {
     }
     lifebar[make].style.width = `${player[make].currenthealth}%`;
     playerturn = p2;
-    makeLog(`heal himself`,player[make].name)
-    document.querySelector(`.player${make+1}`).style.backgroundColor = "#39353580"
-document.querySelector(`.player${p2+1}`).style.backgroundColor = "#393535cc"
-
+    makeLog(`heal himself`, player[make].name);
+    document.querySelector(`.player${make + 1}`).style.backgroundColor =
+      "#39353580";
+    document.querySelector(`.player${p2 + 1}`).style.backgroundColor =
+      "#393535cc";
   }
 }
 
 yield.forEach((el, index) => {
   el.addEventListener("click", function () {
     if (playerturn === 0 && index === 0) {
-      document.querySelector(`.player1`).style.backgroundColor = "#39353580"
-      document.querySelector(`.player2`).style.backgroundColor = "#393535cc"
-      
+      document.querySelector(`.player1`).style.backgroundColor = "#39353580";
+      document.querySelector(`.player2`).style.backgroundColor = "#393535cc";
+
       def = 1;
       playerturn = 1;
     } else if (playerturn === 1 && index === 1) {
-      document.querySelector(`.player2`).style.backgroundColor = "#39353580"
-      document.querySelector(`.player1`).style.backgroundColor = "#393535cc"
-      
+      document.querySelector(`.player2`).style.backgroundColor = "#39353580";
+      document.querySelector(`.player1`).style.backgroundColor = "#393535cc";
+
       def = 1;
       playerturn = 0;
     }

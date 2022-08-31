@@ -75,6 +75,41 @@ body .box .hidden {
   opacity: 0;
 }
 
+body .box .restart-modal {
+  position: absolute;
+  width: 60%;
+  height: 500px;
+  background-color: rgba(57, 53, 53, 0.5);
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: -1;
+}
+
+body .box .restart-modal p {
+  text-align: center;
+}
+
+body .box .restart-modal input,
+body .box .restart-modal select,
+body .box .restart-modal button {
+  width: 50%;
+  margin: 10px auto;
+  border-radius: 25px;
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+}
+
 body .box .box-player {
   color: white;
   display: -webkit-box;
